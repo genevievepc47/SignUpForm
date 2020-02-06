@@ -26,34 +26,53 @@ public class FormActivity extends AppCompatActivity {
                 String email = "";
                 String password = "";
                 String confirmation = "";
+                Boolean canMoveOn = true;
 
 
                 EditText nameEdit = (EditText) findViewById(R.id.nameEdit);
                 name = nameEdit.getText().toString();
                 if (name.matches("")) {
-                    Toast.makeText(FormActivity.this, "You did not enter a name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FormActivity.this, "You must enter all information", Toast.LENGTH_SHORT).show();
+                    canMoveOn = false;
                 }
 
 
                 EditText emailEdit = (EditText) findViewById(R.id.emailEdit);
                 email = emailEdit.getText().toString();
                 if (email.matches("")) {
-                    Toast.makeText(FormActivity.this, "You did not enter an email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FormActivity.this, "You must enter all information", Toast.LENGTH_SHORT).show();
+                    canMoveOn = false;
                 }
 
                 EditText passwordEdit = (EditText) findViewById(R.id.passwordEdit);
                 password = passwordEdit.getText().toString();
                 if (password.matches("")) {
-                    Toast.makeText(FormActivity.this, "You did not enter a password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FormActivity.this, "You must enter all information", Toast.LENGTH_SHORT).show();
+                    canMoveOn = false;
                 }
 
                 EditText confirmationEdit = (EditText) findViewById(R.id.passwordEdit2);
                 confirmation = confirmationEdit.getText().toString();
                 if (confirmation.matches("")) {
-                    Toast.makeText(FormActivity.this, "You did not enter a password confirmation", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FormActivity.this, "You must enter all information", Toast.LENGTH_SHORT).show();
+                    canMoveOn = false;
                 }
 
                 //make sure password and confirmation match
+                //if they dont match, show a message and change cmo to false
+                if(!(password.matches(confirmation)))//if they dont match
+                {
+                    Toast.makeText(FormActivity.this, "Your password and password confirmation do not match", Toast.LENGTH_SHORT).show();
+                    canMoveOn = false;
+                }
+
+                //display the message if everything is ok
+                if(canMoveOn == true)
+                {
+                    Toast.makeText(FormActivity.this, "Welcome, " + name + ", to the SignUpForm App", Toast.LENGTH_SHORT).show();
+                }
+
+
 
 
 
